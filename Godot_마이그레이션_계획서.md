@@ -292,22 +292,27 @@ NPC (StaticBody3D)
 
 ## 6. 단계별 작업 계획
 
-### Phase 1: 프로젝트 초기화 + 기본 월드 (1일차)
+### Phase 1: 프로젝트 초기화 + 기본 월드 ✅ 완료
 
 ```
-작업 목록:
-  1. Godot 4.x 프로젝트 생성
-  2. 에셋 import (Kenney GLB 5개 팩 + 텍스처 + 폰트)
-  3. 메인 씬 구성:
-     - WorldEnvironment (배경색 rgb(180,210,255))
-     - DirectionalLight3D (색상, 방향)
-     - Ground 평면 (grass_block.jpeg, 텍스처 반복 40x40)
-  4. Camera3D 설정 (Orthographic, size=22, 회전 30/135/0)
-  5. 빈 Player 씬 생성 + 카메라 추적
+완료 항목:
+  1. Godot 4.x 프로젝트 생성 (mail-deliver-godot)
+  2. 기본 에셋 복사 (grass_block.jpeg, title.png, malgun.ttf)
+  3. 메인 씬 구성 (scenes/main.tscn):
+     - WorldEnvironment (배경색 #B4D2FF, Custom Color)
+     - DirectionalLight3D (색상 #FFF5CC, Rotation X=-45 Y=40)
+     - Ground MeshInstance3D (PlaneMesh 80x80, 단색 #B4DC96)
+  4. Camera3D 설정 (Orthographic, size=22, Rotation X=-30 Y=135)
+  5. Player 씬 생성 (scenes/player.tscn, CharacterBody3D)
 
-검증:
-  - 게임 실행 시 초록 바닥 + 하늘색 배경 보임
-  - 카메라 쿼터뷰 각도 확인
+비고:
+  - grass_block.jpeg 텍스처는 마인크래프트 스타일이라 단색으로 대체
+  - main.tscn을 메인 씬으로 설정 완료
+  - GitHub 커밋 완료 (b3e0d9d)
+
+검증 완료:
+  - ✅ 게임 실행 시 초록 바닥 + 하늘색 배경 보임
+  - ✅ 카메라 쿼터뷰 각도 확인
 ```
 
 ### Phase 2: 플레이어 이동 + 충돌 (1일차)
