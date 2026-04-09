@@ -1,9 +1,34 @@
 [gd_scene format=3 uid="uid://ct3np1wf8fkf1"]
 
+[ext_resource type="Script" uid="uid://dyodm55les1l" path="res://scenes/player.gd" id="1_3vyb7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_u8vuu"]
+size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vyb7"]
+albedo_color = Color(1, 0.54901963, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_g2els"]
+radius = 0.3
+height = 0.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhqgy"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dqkch"]
+size = Vector3(0.5, 1, 0.5)
+
 [node name="Player" type="CharacterBody3D" unique_id=1287634943]
+script = ExtResource("1_3vyb7")
 
 [node name="Body" type="MeshInstance3D" parent="." unique_id=1067454727]
+mesh = SubResource("BoxMesh_u8vuu")
+surface_material_override/0 = SubResource("StandardMaterial3D_3vyb7")
 
 [node name="Head" type="MeshInstance3D" parent="." unique_id=319292528]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+mesh = SubResource("SphereMesh_g2els")
+surface_material_override/0 = SubResource("StandardMaterial3D_qhqgy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1490049856]
+shape = SubResource("BoxShape3D_dqkch")

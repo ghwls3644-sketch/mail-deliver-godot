@@ -75,9 +75,9 @@
 | 항목 | 값 |
 |------|-----|
 | 투영 | Orthographic |
-| 오프셋 | (-8, 13.5, 18) |
-| 회전 | Pitch=30, Yaw=135, Roll=0 |
-| FOV/Size | 22 |
+| 오프셋 | (-12, 14, 12) ← 대칭 정렬로 변경 (원본 -8,13.5,18) |
+| 추적 방식 | look_at(player.position, Vector3.UP) |
+| Size | 22 |
 
 ### 2.7 조명
 
@@ -315,18 +315,28 @@ NPC (StaticBody3D)
   - ✅ 카메라 쿼터뷰 각도 확인
 ```
 
-### Phase 2: 플레이어 이동 + 충돌 (1일차)
+### Phase 2: 플레이어 이동 + 충돌 (1일차) ✅ 완료 (방향키 조정 잔여)
 
 ```
-작업 목록:
-  1. Player CharacterBody3D 구성 (큐브+구)
-  2. 이동 로직 (WASD, 속도 5, 카메라 기준 방향)
-  3. move_and_slide() 충돌 처리
-  4. 테스트용 벽 배치
+완료 항목:
+  1. Player CharacterBody3D 구성
+     - Body: BoxMesh (0.5,1.0,0.5), 주황색 #FF8C00
+     - Head: SphereMesh (radius=0.3, height=0.6), 노란색 #FFFF00, Y=0.8
+     - CollisionShape3D: BoxShape3D (0.5,1.0,0.5)
+  2. player.gd: 이동 로직 (화살표키, 속도 5, move_and_slide)
+  3. main.gd: 카메라 look_at으로 플레이어 추적
+  4. 바닥 충돌체: StaticBody3D + WorldBoundaryShape3D 추가
+  5. Player를 main.tscn에 배치 (Y=1)
 
-검증:
-  - WASD로 이동, 벽에 부딪히면 슬라이딩
-  - 카메라가 플레이어 추적
+잔여 작업:
+  - ⚠️ 화살표키 방향 미세 조정 필요 (좌우 반전 이슈)
+  - WASD 키 매핑 추가 (현재 화살표키만)
+
+검증 결과:
+  - ✅ 플레이어 화면에 표시됨 (주황 박스 + 노란 구)
+  - ✅ 카메라 플레이어 추적
+  - ✅ 화살표키로 이동 가능
+  - ⚠️ 좌우 방향 반전 - 다음 세션에서 수정 예정
 ```
 
 ### Phase 3: 맵 배치 (2일차)

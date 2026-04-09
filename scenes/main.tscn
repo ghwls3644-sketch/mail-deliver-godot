@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://bl76bojgkorpq"]
 
+[ext_resource type="Script" uid="uid://eaki4i0majbx" path="res://scenes/main.gd" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://ct3np1wf8fkf1" path="res://scenes/player.tscn" id="2_sugp2"]
+
 [sub_resource type="Environment" id="Environment_sgp6g"]
 background_mode = 1
 background_color = Color(0.7058824, 0.8235294, 1, 1)
@@ -12,7 +15,10 @@ uv1_scale = Vector3(40, 40, 40)
 material = SubResource("StandardMaterial3D_o5qli")
 size = Vector2(80, 80)
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0wfyh"]
+
 [node name="Main" type="Node3D" unique_id=1815830758]
+script = ExtResource("1_0wfyh")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1260194488]
 environment = SubResource("Environment_sgp6g")
@@ -29,3 +35,11 @@ mesh = SubResource("PlaneMesh_0wfyh")
 transform = Transform3D(-0.70710677, -0.35355338, 0.6123724, 0, 0.8660254, 0.5, -0.70710677, 0.35355338, -0.6123724, 0, 0, 0)
 projection = 1
 size = 22.0
+
+[node name="Player" parent="." unique_id=1287634943 instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=543184598]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=528606483]
+shape = SubResource("WorldBoundaryShape3D_0wfyh")
